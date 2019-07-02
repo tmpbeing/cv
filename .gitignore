@@ -1,5 +1,6 @@
 .DS_Store
 .auctex-auto
 *.log
-CV.aux
-CV.out
+*.aux
+*.out
+*.synctex.gz
