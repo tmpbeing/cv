@@ -16,7 +16,9 @@
 
 % FONT %
 
-\usepackage[default]{carlito}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
 \usepackage{moresize}
 \usepackage{fontawesome}
 \usepackage{setspace}
@@ -36,44 +38,46 @@
   % showframe,
 }
 
+\usepackage{enumitem}
+\setlist{nosep}
+
 \usepackage{longtable}
-\setlength{\LTpre}{0pt} % Remove default whitespace before longtable
-\setlength{\LTpost}{0pt} % Remove default whitespace after longtable
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
 
-\setlength{\tabcolsep}{0pt} % No spacing between table columns
+\setlength{\tabcolsep}{0pt}
 
-% Environment to hold a new list of entries
 \newenvironment{entrylist}{
   \begin{longtable}[H]{l l}}
     {\end{longtable}
 }
 
-
 % CUSTOM COMMANDS %
+\usepackage{tikz}
+\usepackage{etoolbox}
+
 \newcommand{\icon}[3]{
   \vcenteredhbox{{\makebox(#2, #2){\large\csname #1\endcsname}}}
-    \hspace{0.1cm}
   \vcenteredhbox{#3}
 }
 
-\newcommand{\vcenteredhbox}[1]{
-  \begingroup
-    \setbox0=\hbox{#1}\parbox{\wd0}{\box0}
-  \endgroup
+\newcommand{\vcenteredhbox}[1]{%
+  \begingroup%
+    \setbox0=\hbox{#1}\parbox{\wd0}{\box0}%
+  \endgroup%
 }
 
-\newcommand{\cvsection}[1]{
-  \vspace{\baselineskip}
-  {\LARGE\bfseries\colorbox{black}{\textcolor{white}{#1}}}\\[-1.6ex]
-  {\rule{\linewidth}{2pt}\par}\medskip
+\newcommand{\cvsection}[1]{%
+  \vspace{\baselineskip}%
+  \hrulefill[0.8ex]{2pt}\hspace{0.5ex}{\Large\bfseries\colorbox{black}{\textcolor{white}{#1}}}\hspace{0.5ex}\hrulefill[0.8ex]{2pt}\\[1ex]
 }
+
 \newcommand{\entry}[4]{
-  \parbox[t]{0.175\textwidth}{
-    #1
-  }
-  &\parbox[t]{0.825\textwidth}{
-    \textbf{#2}
-    \hfill
-    {\footnotesize \textbf{\textcolor{black}{#3}}}\\
-    #4
-  }\\\\}
+  \parbox[t]{0.19\textwidth}{#1}
+  &\parbox[t]{0.81\textwidth}{\textbf{#2} \hfill {\footnotesize \textbf{\textcolor{black}{#3}}}\\ #4}\\\\}
+
+\newcommand{\smallentry}[3]{
+  \parbox[t]{0.19\textwidth}{#1}
+  &\parbox[t]{0.81\textwidth}{\textbf{#2} \hfill {\footnotesize \textbf{\textcolor{black}{#3}}}\\}\\}
+
+\renewcommand*{\hrulefill}[2][0pt]{\leavevmode \leaders \hbox to 1pt{\rule[#1]{2pt}{#2}} \hfill \kern 0pt}
