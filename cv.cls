@@ -11,6 +11,7 @@
 
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 \pagestyle{empty} % No headers or footers
 
